@@ -50,6 +50,16 @@ if ( $my_lightning_custom_css ) {
 	);
 }
 
+function my_ltg_add_entry_content( $content ) {
+	// 表示を改変する投稿タイプの条件分岐.
+	if ( 'post' === get_post_type() ) {
+		// 本文の内容の最後に要素を追加.
+		$content .= '<div>プラグインからカスタムフィールドなどの情報</div>';
+	}
+	// 本文の内容を返す.
+	return $content;
+}
+add_filter( 'the_content', 'my_ltg_add_entry_content', 8 );
 /************************************************
  * 独自の処理を必要に応じて書き足します
  */
